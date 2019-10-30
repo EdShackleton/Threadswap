@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for item in items %}
+        <div class="row">
+            <div class="col-md-2 col-sm-3 text-center">
+                <a class="story-img" href="#">
+                    <img src="/media/img/profile.jpg" class="img-circle">
+                </a>
+                <p><span class="boldtext">User:</span> Niel</p>
+            </div>
+            <div class="col-md-10 col-sm-9">
+                <h3>{{ item.item_name }}</h3>
+                <div class="row">
+                    <div class="col-xs-9">
+                        <p>{{ item.item_description|truncatewords:15 }}</p>
+                        <p><span class="boldtext">Size:</span> {{item.size}}</p>
+                        <p><span class="boldtext">Brand:</span> {{item.brand}}</p>
+                        <p><span class="boldtext">Original Price:</span> {{ item.original_price }}</p>
+                        <p><span class="boldtext">Added on:</span> {{ item.date_added }} </p>
+                        <p><a href="{% url 'item_detail' item.id %}"  class="btn btn-default">See</a></p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    {% endfor %}
+{% endblock %}

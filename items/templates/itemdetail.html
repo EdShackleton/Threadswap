@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-2 col-sm-3 text-center">
+            <a class="story-img" href="#">
+                <img src="/media/img/profile.jpg" class="img-circle">
+            </a>
+            <p><span class="boldtext">User:</span> Niel</p>
+        </div>
+        <div class="col-sm-10 col-md-9">
+                <img class="img-blogpost" src="/media/{{ post.image }}">
+            <h3>{{ item.item_name }}</h3>
+            <div class="row">
+                <div class="col-xs-9">
+                    <p>{{ item.item_description }}</p>
+                    <p><span class="boldtext">Size:</span> {{item.size}}</p>
+                        <p><span class="boldtext">Brand:</span> {{item.brand}}</p>
+                        <p><span class="boldtext">Original Price:</span> {{ item.original_price }}</p>
+                        <p><span class="boldtext">Added on:</span> {{ item.date_added }} </p>
+                    <a href="{% url 'get_items' %}" class="btn btn-default">Back</a>
+                    <a href="{% url 'edit_item' item.id %}" class="btn btn-default">Edit Item</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
