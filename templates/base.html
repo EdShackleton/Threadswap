@@ -27,6 +27,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'get_items' %}">Home</a></li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'new_item' %}">New item</a></li>
                         <li><a href="{% url 'profile' %}">Profile</a></li>
@@ -50,8 +51,8 @@
     <div id="masthead">
             <div class="container">
                 <div class="row">
-                    <h1> stack
-                        <p id="logo" class="lead">The Trials of a Bootcamp Developer</p>
+                    <h1> ThreadSwap
+                        <p id="logo" class="lead">Do your Thread Swapping right here</p>
                     </h1>
                 </div>
             </div>

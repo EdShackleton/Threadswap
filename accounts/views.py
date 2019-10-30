@@ -6,21 +6,17 @@ from accounts.forms import UserLoginForm, UserRegistrationForm
 
 # Create your views here.
 
-def index(request):
-    """Return the index.html file"""
-    return render(request, 'index.html')
-    
 @login_required
 def logout(request):
     """Log the user out"""
     auth.logout(request)
     messages.success(request, "You have been successfully logged out!")
-    return redirect(reverse('index'))
+    return redirect(reverse('get_items'))
 
 def login(request):
     """Return a login page"""
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('get_items'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
         
@@ -31,7 +27,7 @@ def login(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
-                return redirect(reverse('index'))
+                return redirect(reverse('get_items'))
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
     else:
@@ -41,7 +37,7 @@ def login(request):
 def registration(request):
     """Render the registration page"""
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect(reverse('get_items'))
 
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
@@ -55,7 +51,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have been successfully registered!")
-                return redirect(reverse('index'))
+                return redirect(reverse('get_items'))
             else:
                 messages.error(request, "Unable to register your account at this time")
             
