@@ -3,7 +3,6 @@ from django.utils import timezone
 
 class Item(models.Model):
     """ A single item """
-    
     item_name = models.CharField(max_length=50)
     item_description = models.TextField(blank=True, null=True)
     brand = models.CharField(max_length=50, blank=True, null=True)

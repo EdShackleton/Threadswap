@@ -8,6 +8,7 @@
     <title>{% block page_title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
 </head>
 <body>
     <h1>{% block page_heading %}{% endblock %}</h1>
@@ -59,18 +60,8 @@
         </div>
     
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <!--items-->
-                            {% block content %}
-                            {% endblock %}
-                            <!--items-->
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% block content %}
+            {% endblock %}
         </div>
         <footer>
             <div class="container">

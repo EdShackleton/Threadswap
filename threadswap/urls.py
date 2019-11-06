@@ -19,6 +19,8 @@ from accounts.views import logout, login, registration, user_profile
 from django.views.generic import RedirectView
 from django.views.static import serve
 from .settings import MEDIA_ROOT
+from search import urls as urls_search
+from items import urls as urls_items
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +29,7 @@ urlpatterns = [
     url(r'^accounts/login/$', login, name='login'),
     url(r'^accounts/register/$', registration, name='registration'),
     url(r'^accounts/profile/$', user_profile, name='profile'),
-    url(r'items/', include('items.urls')),
+    url(r'items/', include(urls_items)),
+    url(r'search/', include(urls_search)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root' : MEDIA_ROOT }),
 ]
