@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Item(models.Model):
     """ A single item """
@@ -10,6 +11,7 @@ class Item(models.Model):
     original_price = models.IntegerField()
     image = models.ImageField(upload_to="img")
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, related_name="items", on_delete=models.CASCADE)
     
     def __unicode__(self):
         return self.title

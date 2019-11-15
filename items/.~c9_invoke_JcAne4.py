@@ -19,13 +19,25 @@ def item_detail(request, pk):
     item = get_object_or_404(Item, pk=pk)
     return render(request, "itemdetail.html", {"item" : item})
 
-def edit_item(request, pk=None):
-    """
-    Create a view that allows us to create
-    or edit an item depending if the Item ID
-    is null or not
-    """
-    item = get_object_or_404(Item, pk=pk) if pk else None
+def create_item(request):
+    """ Creates a view that allows us to create or edit an item
+    if the post ID is null or not"""
+    
+    item = get_object_or_404(Item)
+    if request.method == "POST":
+        form = NewItemForm(request.POST, request.FILES, instance=item)
+        if form.is_valid():
+            item = form.save()
+            return redirect(item_detail, item.pk)
+    else:
+        form = NewItemForm()
+    return render(request, 'newitemform.html', {'form' : form})
+
+def edit_item(request, pk):
+    """ Creates a view that allows us to create or edit an item
+    if the post ID is null or not"""
+    
+    item = get_object_or_404(Item, pk=pk)
     if request.method == "POST":
         form = NewItemForm(request.POST, request.FILES, instance=item)
         if form.is_valid():
@@ -33,23 +45,4 @@ def edit_item(request, pk=None):
             return redirect(item_detail, item.pk)
     else:
         form = NewItemForm(instance=item)
-    return render(request, 'newitemform.html', {'form': form})
-
-def create_item(request):
-    """
-    Create a view that allows us to create
-    or edit an item depending if the Item ID
-    is null or not
-    """
-    
-    if request.method == "POST":
-        form = NewItemForm(request.POST)
-        owner = request.user
-        if form.is_valid():
-            item = form.save(commit=False)
-            item.owner = owner
-            item.save()
-            return redirect(get_items)
-    else:
-        form = NewItemForm()
     return render(request, 'newitemform.html', {'form' : form})

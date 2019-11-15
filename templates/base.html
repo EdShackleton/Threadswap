@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block page_title %}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
 </head>
 <body>
-    <h1>{% block page_heading %}{% endblock %}</h1>
-    
-    
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -24,13 +22,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'get_items' %}"><img src="/media/img/logo.png"></a>
+                <span><a class="navbar-brand" href="{% url 'get_items' %}"><img src="/media/img/logo.png"></a></span>
+                <span><a class="navbar-brand" href="{% url 'get_items' %}">ThreadSwap</a></span>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'get_items' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'new_item' %}">New item</a></li>
+                        <li><a href="{% url 'new_item' %}">Add item</a></li>
+                        <li><a href="#">Requests</a></li>
                         <li><a href="{% url 'profile' %}">Profile</a></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
@@ -41,33 +42,23 @@
             </div>
         </div>
     </nav>
-    <hr>
     {% if messages %}
-        <div>
+        <div class="message-banner">
             {% for message in messages %}
                 {{ message }}
             {% endfor %}
         </div>
+        <hr>
     {% endif %}
-    <div id="masthead">
-            <div class="container">
-                <div class="row">
-                    <h1> ThreadSwap
-                        <p id="logo" class="lead">Do your Thread Swapping right here</p>
-                    </h1>
-                </div>
-            </div>
-        </div>
-    
+    <div class="container">
+        <h1 class="page-title"><strong>{% block page_heading %}{% endblock %}</strong></h1>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
         <div class="container">
-            {% block content %}
-            {% endblock %}
+            <p>Made by Ed Shackleton</p>
         </div>
-        <footer>
-            <div class="container">
-                <p>Made by Ed Shackleton</p>
-            </div>
-        </footer>
-    
+    </footer>
 </body>
 </html>

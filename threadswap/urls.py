@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from accounts.views import logout, login, registration, user_profile
+from accounts.views import logout, login, registration, user_profile, about
 from django.views.generic import RedirectView
 from django.views.static import serve
 from .settings import MEDIA_ROOT
@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^accounts/profile/$', user_profile, name='profile'),
     url(r'items/', include(urls_items)),
     url(r'search/', include(urls_search)),
+    url(r'^about/$', about, name='about'),
     url(r'^media/(?P<path>.*)$', serve, {'document_root' : MEDIA_ROOT }),
 ]
