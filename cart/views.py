@@ -12,10 +12,9 @@ def add_to_cart(request, id):
     """
     A view to add item to cart
     """
-    quantity = int(request.POST.get('quantity'))
     
     cart = request.session.get('cart', {})
-    cart[id] = cart.get(id, quantity)
+    cart[id] = cart.get(id)
     
     request.session['cart'] = cart
-    return redirect(reverse('index'))
+    return redirect(reverse('get_items'))

@@ -22,7 +22,7 @@
                     <p class="item-details">Added on: {{ item.date_added }} </p>
                     <a href="{% url 'get_items' %}" class="btn btn-default">Back</a>
                     <a href="{% url 'edit_item' item.id %}" class="btn btn-default">Edit Item</a>
-                    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-default">Buy!</a>
+                    <a href="{% url 'add_to_cart' item.id %}" class="btn btn-default">Buy!</a>
                     <hr>
                 </div>
             </div>

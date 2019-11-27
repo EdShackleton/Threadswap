@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+
+{% block content %}
+<div class="row row-flex">
+    {% for item in cart_items %}
+        <div class="col-sm-12 col-md-4 text-center individual-item">
+            <a class="item-img" href="{% url 'item_detail' item.id %}">
+                <img src="/media/img/profile.jpg" class="img-circle">
+            </a>
+            <h3 class="item-name"><strong>{{ item.item_name }}</strong></h3>
+            <div class="row">
+                <p class="item-details">Size: {{item.size}}</p>
+                <p class="item-details">Brand: {{item.brand}}</p>
+                <p class="item-details">Original Price: {{ item.original_price }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <h2>Total</h2>
+    <h3>£{{ total }}</h3>
+    <a href="/" class="btn btn-success" role="button">Checkout</a>
+</div>
