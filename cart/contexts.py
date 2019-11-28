@@ -10,9 +10,10 @@ def cart_contents(request):
     cart_items = []
     total = 0
     item_count = 0
-    for id in cart.items():
-        item = get_object_or_404(Item, pk=id)
-        total += item.price
-        cart_items.append({'id':id, 'item':item})
+    for c in cart:
+        item = get_object_or_404(Item, pk=int(c))
+        total += item.original_price
+        item_count += 1
+        cart_items.append({'id': id, 'item': item})
     
     return { 'cart_items':cart_items, 'total':total, 'item_count':item_count }
