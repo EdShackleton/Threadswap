@@ -22,4 +22,4 @@ def add_to_cart(request, id):
     
     request.session['cart'] = cart
     
-    return redirect(reverse('get_items'))
+    return redirect(reverse('view_cart'))

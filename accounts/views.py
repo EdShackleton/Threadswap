@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm
+from items.models import Item
 
 # Create your views here.
 
@@ -63,8 +64,8 @@ def registration(request):
 
 def user_profile(request):
     """The users profile page"""
-    user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile" : user})
+    user_items = Item.objects.filter(owner=request.user.username)
+    return render(request, 'profile.html', {"profile": user, "item": user_items})
     
 def about(request):
     """Takes the user to the about page"""
