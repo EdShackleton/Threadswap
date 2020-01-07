@@ -24,15 +24,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <span><a class="navbar-brand" href="{% url 'get_items' %}"><img src="/media/img/logo.png"></a></span>
-                <span><a class="navbar-brand" href="{% url 'get_items' %}">ThreadSwap</a></span>
+                <a class="navbar-brand" href="{% url 'get_items' %}">
+                <span><img src="/static/img/ThreadSwapLogo.png" id="logo"></span>
+                <span id="ThreadSwapTitle">ThreadSwap</span>
+                </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                         <li><a href="{% url 'get_items' %}">Home</a></li>
                         <li><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'new_item' %}">Add item</a></li>
+                        <li><a href="{% url 'new_item' %}">Sell</a></li>
                         <li><a href="{% url 'view_cart' %}">Cart</a></li>
                         <li><a href="{% url 'profile' %}">Profile</a></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>

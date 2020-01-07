@@ -24,6 +24,12 @@ def item_detail(request, pk):
     
     item = get_object_or_404(Item, pk=pk)
     return render(request, "itemdetail.html", {"item" : item})
+    
+def owner_item_detail(request, pk):
+    """ Same as item_detail, but allow the owner to edit """
+    
+    item = get_object_or_404(Item, pk=pk)
+    return render(request, "owneritemdetail.html", {"item" : item})
 
 def edit_item(request, pk=None):
     """

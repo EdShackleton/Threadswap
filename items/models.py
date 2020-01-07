@@ -9,7 +9,7 @@ class Item(models.Model):
     brand = models.CharField(max_length=50, blank=True, null=True)
     size = models.IntegerField()
     original_price = models.IntegerField()
-    image = models.ImageField(upload_to="img")
+    image = models.ImageField(upload_to="image", blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, related_name="items", on_delete=models.CASCADE)
     

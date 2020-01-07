@@ -36,6 +36,12 @@ footer {
 
 /* navbar */
 
+#logo {
+    height: 35px;
+    width: 35px;
+    padding: 0px;
+}
+
 .navbar.affix {
     position: fixed;
     top: 0;
@@ -48,8 +54,11 @@ footer {
     border-bottom: 1px solid #d3ecc5;
 }
 
+.navbar-brand {
+    padding-top: 7px;
+}
+
 .navbar-default .navbar-brand {
-    padding: 15px 10px;
     font-family: 'Baloo Bhai', cursive;
     font-size: 35px;
     color: #E56399;
@@ -111,8 +120,15 @@ hr {
 }
 
 .item-img {
-    margin-top: 25%;
-    display: block;
+    display: inline-block;
+    max-height: 100px;
+    max-width: 150px;
+}
+
+.item-detail-img {
+    display: inline-block;
+    max-height: 500px;
+    max-width: 500px;
 }
 
 .item-name {
