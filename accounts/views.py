@@ -64,9 +64,10 @@ def registration(request):
 
 def user_profile(request):
     """The users profile page"""
-    user_items = Item.objects.filter(owner=request.user.username)
-    return render(request, 'profile.html', {"profile": user, "item": user_items})
-    
+    user = request.user
+    user_items = Item.objects.filter(owner=request.user)
+    return render(request, 'profile.html', {"profile": user, "user_items": user_items})
+
 def about(request):
     """Takes the user to the about page"""
     return render(request, 'about.html')
