@@ -2,6 +2,10 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 
+{% block page_title %}Your Cart{% endblock %}
+
+{% block page_heading %}Your Cart{% endblock %}
+
 {% block content %}
 <div class="row row-flex">
     {% for item in cart_items %}
@@ -21,7 +25,7 @@
 <div class="row">
     <h2>Total</h2>
     <h3>£{{ total }}</h3>
-    <a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a>
-    <a href="{% url 'get_items' %}" class="btn btn-success" role="button">Back to browse</a>
+    <a href="{% url 'checkout' %}" class="btn btn-info" role="button">Checkout</a>
+    <a href="{% url 'get_items' %}" class="btn btn-info" role="button">Back to browse</a>
 </div>
 {% endblock %}

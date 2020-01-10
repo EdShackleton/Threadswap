@@ -46,6 +46,7 @@ def checkout(request):
             if customer.paid:
                 messages.error(request, "You have successfully paid!")
                 request.session['cart'] = {}
+                cart.objects.delete()
                 return redirect(reverse, 'items')
             else:
                 messages.error(request, "Unable to take payment")

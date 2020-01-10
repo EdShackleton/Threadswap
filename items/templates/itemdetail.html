@@ -14,10 +14,10 @@
             <p class="item-details">{{ item.item_description }}</p>
             <p class="item-details">Size: {{item.size}}</p>
             <p class="item-details">Brand: {{item.brand}}</p>
-            <p class="item-details">Original Price: {{ item.original_price }}</p>
+            <p class="item-details">Price: £{{ item.original_price }}</p>
             <p class="item-details">Added on: {{ item.date_added }} </p>
-            <a href="{% url 'get_items' %}" class="btn btn-default">Back</a>
-            <a href="{% url 'add_to_cart' item.id %}" class="btn btn-default">Buy!</a>
+            <a href="{% url 'get_items' %}" class="btn btn-info">Back</a>
+            <a href="{% url 'add_to_cart' item.id %}" class="btn btn-info">Buy!</a>
             <hr>
         </div>
         </div>

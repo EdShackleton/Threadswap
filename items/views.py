@@ -21,22 +21,18 @@ def item_detail(request, pk):
     """ Creates a view that shows a specific item based on the item ID (pk)
     and render it to the 'itemdetail.html' template, 
     or return a 404 error if not found"""
-    
     item = get_object_or_404(Item, pk=pk)
     return render(request, "itemdetail.html", {"item" : item})
     
 def owner_item_detail(request, pk):
     """ Same as item_detail, but allow the owner to edit """
-    
     item = get_object_or_404(Item, pk=pk)
     return render(request, "owneritemdetail.html", {"item" : item})
 
 def edit_item(request, pk=None):
-    """
-    Create a view that allows us to create
+    """Create a view that allows us to create
     or edit an item depending if the Item ID
-    is null or not
-    """
+    is null or not"""
     item = get_object_or_404(Item, pk=pk) if pk else None
     if request.method == "POST":
         form = NewItemForm(request.POST, request.FILES, instance=item)
@@ -48,14 +44,11 @@ def edit_item(request, pk=None):
     return render(request, 'newitemform.html', {'form': form})
 
 def create_item(request):
-    """
-    Create a view that allows us to create
+    """Create a view that allows us to create
     or edit an item depending if the Item ID
-    is null or not
-    """
-    
+    is null or not"""
     if request.method == "POST":
-        form = NewItemForm(request.POST)
+        form = NewItemForm(request.POST, request.FILES)
         owner = request.user
         if form.is_valid():
             item = form.save(commit=False)

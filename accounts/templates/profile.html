@@ -15,7 +15,7 @@
                 <div class="panel-body">
                     {% for item in user_items %}
                             <div class="col-sm-12 col-md-4 text-center individual-item">
-                                <a href="{% url 'item_detail' item.id %}">
+                                <a href="{% url 'owner_item_detail' item.id %}">
                                     <img src="{{ MEDIA_URL }}{{ item.image }}" class="item-img">
                                     <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ Item.image }}')"></div>
                                     <h3 class="item-name"><strong>{{ item.item_name }}</strong></h3>
