@@ -32,7 +32,7 @@ def checkout(request):
                     order = order,
                     item = item,
                     )
-                order_line_item.save
+                order_line_item.save()
             try:
                 customer = stripe.charge.create(
                     amount = int(total * 100),

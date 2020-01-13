@@ -17,14 +17,14 @@
             <div class="row">
                 <p class="item-details">Size: {{ item.item.size }}</p>
                 <p class="item-details">Brand: {{ item.item.brand }}</p>
-                <p class="item-details">Original Price: {{ item.item.original_price }}</p>
+                <p class="item-details">Price: {{ item.item.original_price }}</p>
             </div>
         </div>
     {% endfor %}
 </div>
 <div class="row">
-    <h2>Total</h2>
-    <h3>£{{ total }}</h3>
+    <h2 class="page-title">Total</h2>
+    <h3 class="page-title">£{{ total }}</h3>
     <a href="{% url 'checkout' %}" class="btn btn-info" role="button">Checkout</a>
     <a href="{% url 'get_items' %}" class="btn btn-info" role="button">Back to browse</a>
 </div>

@@ -19,7 +19,7 @@ class Order(models.Model):
         
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
-    product = models.ForeignKey(Item, null=False, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, null=False, on_delete=models.CASCADE)
     
     def __str__(self):
         return "{0} @ {1}".format(self.item_name, self.original_price)
