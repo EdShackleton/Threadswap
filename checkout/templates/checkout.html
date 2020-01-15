@@ -21,7 +21,7 @@
                 <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
 
                 <div class="caption">
-                    <h3>{{ item.item.item_name }}</h3>
+                    <h3 class="page-title">{{ item.item.item_name }}</h3>
                     <p class="product-description">{{ item.item.item_description }}</p>
                     <p>£{{ item.item.original_price }}</p>
                 </div>
@@ -30,12 +30,12 @@
     {% endfor %}
 </div>
 <div class="row">
-    <p>Total</p>
-    <p>£{{ total }}</p>
+    <p class="page-title">Total</p>
+    <p class="page-title">£{{ total }}</p>
 </div>
 
 <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
-    <legend>Payment Details</legend>
+    <legend class="page-title">Payment Details</legend>
 
     <div id="credit-card-errors" style="display: none;">
         <div id="alert-message block-message error" id="stripe-error-message"></div>
