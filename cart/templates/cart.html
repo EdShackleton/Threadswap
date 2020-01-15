@@ -10,16 +10,18 @@
 <div class="row row-flex">
     {% for item in cart_items %}
         <div class="col-sm-12 col-md-4 text-center individual-item">
-            <img src="{{ MEDIA_URL }}{{ item.image }}" class="item-img">
-            <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ Item.image }}')"></div>
-            <h3 class="item-name"><strong>{{ item.item.item_name }}</strong></h3>
-            <div class="row">
-                <p class="item-details">Size: {{ item.item.size }}</p>
-                <p class="item-details">Brand: {{ item.item.brand }}</p>
-                <p class="item-details">Price: {{ item.item.original_price }}</p>
-                <a href="{% url 'delete_from_cart' item.id %}" class="btn btn-info">X</a>
-            </div>
-        </div>
+            <a href="{% url 'item_detail' item.id %}">
+                <img src="{{ MEDIA_URL }}{{ item.image }}" class="item-img">
+                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ Item.image }}')"></div>
+                <h3 class="item-name"><strong>{{ item.item_name }}</strong></h3>
+                <div class="row">
+                    <p class="item-details">Size: {{item.size}}</p>
+                    <p class="item-details">Brand: {{item.brand}}</p>
+                    <p class="item-details">Price: £{{ item.original_price }}</p>
+                </div>
+                <a href="" class="btn btn-info">X</a>
+            </a>
+        </div>       
     {% endfor %}
 </div>
 <div class="row">
