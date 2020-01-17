@@ -13,7 +13,7 @@ def add_to_cart(request, id):
     """
     A view to add item to cart
     """
-    cart = request.session.get('cart', [])
+    cart = request.session.get('cart', {})
     if id in cart:
         cart[id] = int(cart[id])
         print("already in list - this will not add another")
@@ -29,7 +29,9 @@ def delete_from_cart(request, id):
     """
     Delete an item from your cart
     """
-    item = get_object_or_404(item, id=item_id)
+    item = get_object_or_404(Item, id=id)
+    print(id)
+    print(item.id)
     cart = request.session.get('cart', {})
-    cart.remove(id)
+    cart.pop(id)
     return redirect(reverse('view_cart'))

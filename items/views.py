@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Item
 from .forms import NewItemForm
 from django.contrib.auth.decorators import login_required
+from cart.contexts import cart_contents
 
 
 def get_items(request):
