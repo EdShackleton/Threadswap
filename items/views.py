@@ -11,7 +11,7 @@ def get_items(request):
     to the 'items.html' template"""
     user = request.user
     if request.user.is_authenticated():
-        items = Item.objects.exclude(owner=user, id=cart_contents).filter(date_added__lte=timezone.now
+        items = Item.objects.exclude(owner=user).filter(date_added__lte=timezone.now
             ()).order_by('-date_added')
     else:
         items = Item.objects.filter(date_added__lte=timezone.now
