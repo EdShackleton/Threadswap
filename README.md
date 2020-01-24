@@ -27,6 +27,10 @@ I struggled to find reason for javascript in this project, however upon research
 javascript functions and features, I found the zoom function I implemented on the
 item detail pages. This helps give the users a better view of the item.
 
+I used this tutorial to accomplish this:
+
+https://www.w3schools.com/howto/howto_js_image_zoom.asp
+
 Future Features
 
 Due to time constraints, I was unable to hide an item if it was already in the
