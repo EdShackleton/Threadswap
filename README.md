@@ -23,6 +23,10 @@ had to keep the project simple, so there aren't many unique features.
 
 Users can create items to be sold, and can purchase items as well.
 
+I struggled to find reason for javascript in this project, however upon researching
+javascript functions and features, I found the zoom function I implemented on the
+item detail pages. This helps give the users a better view of the item.
+
 Future Features
 
 Due to time constraints, I was unable to hide an item if it was already in the

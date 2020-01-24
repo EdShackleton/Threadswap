@@ -5,30 +5,10 @@
 {% block page_heading %}{{ item.item_name }}{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-sm-12 col-md-6 text-center">
-            <div class="img-zoom-container">
-                <img src="{{ MEDIA_URL }}{{ item.image }}" id="item-detail-img">
-                <div id="zoomresult" class="img-zoom-result"></div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <a href="{% url 'profile' %}"><p class="item-details"><u>Owner: {{ item.owner }}</u></p></a>
-            <p class="item-details">{{ item.item_description }}</p>
-            <p class="item-details">Size: {{item.size}}</p>
-            <p class="item-details">Brand: {{item.brand}}</p>
-            <p class="item-details">Price: £{{ item.original_price }}</p>
-            <p class="item-details">Added on: {{ item.date_added }} </p>
-            <a href="{% url 'get_items' %}" class="btn btn-info">Back</a>
-            <a href="{% url 'add_to_cart' item.id %}" class="btn btn-info">Buy!</a>
-            <hr>
-        </div>
-    </div>
-
-<script type="text/javascript">
+<script>
     function imageZoom(imgID, resultID) {
         var img, lens, result, cx, cy;
-        img = document.getElementById(item-detail-img);
+        img = document.getElementById(imgID);
         result = document.getElementById(resultID);
         /* Create lens: */
         lens = document.createElement("DIV");
@@ -83,7 +63,29 @@
     }
 </script>
 
-<script type="text/javascript">
-    imageZoom("myimage", "myresult");
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 img-zoom-container">
+        <img id="item-detail-img" src="{{ MEDIA_URL }}{{ item.image }}">
+        <br>
+        <div id="myresult" class="img-zoom-result"></div>
+    </div>
+    
+    
+    
+    <div class="col-sm-12 col-md-6">
+        <a href="{% url 'profile' %}"><p class="item-details"><u>Owner: {{ item.owner }}</u></p></a>
+        <p class="item-details">{{ item.item_description }}</p>
+        <p class="item-details">Size: {{item.size}}</p>
+        <p class="item-details">Brand: {{item.brand}}</p>
+        <p class="item-details">Price: £{{ item.original_price }}</p>
+        <p class="item-details">Added on: {{ item.date_added }} </p>
+        <a href="{% url 'get_items' %}" class="btn btn-info">Back</a>
+        <a href="{% url 'add_to_cart' item.id %}" class="btn btn-info">Buy!</a>
+    </div>
+</div>
+<script>
+    imageZoom("item-detail-img", "myresult");
 </script>
 {% endblock %}
