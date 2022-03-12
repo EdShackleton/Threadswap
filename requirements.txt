@@ -19,7 +19,7 @@ MarkupSafe==1.0
 oauthlib==2.0.6
 olefile==0.45.1
 pbr==5.4.3
-Pillow==5.1.0
+Pillow==9.0.1
 psycopg2==2.7.5
 python-dateutil==2.8.0
 python-debian==0.1.32
